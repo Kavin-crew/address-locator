@@ -1,30 +1,26 @@
 {
-  "name": "next-leaflet-starter",
-  "homepage": "https://next-leaflet-starter.netlify.app",
+  "name": "address-locator",
   "version": "0.1.0",
-  "license": "MIT",
-  "author": "Colby Fayock <hello@colbyfayock.com>",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
-    "export": "next export",
-    "start": "next start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/colbyfayock/next-leaflet-starter"
-  },
-  "bugs": {
-    "url": "https://github.com/colbyfayock/next-leaflet-starter/issues"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "copy-webpack-plugin": "^11.0.0",
     "leaflet": "^1.9.4",
-    "next": "^14.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0",
-    "react-leaflet": "^4.2.1",
-    "sass": "^1.69.5"
+    "leaflet-defaulticon-compatibility": "^0.1.2",
+    "next": "15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.0",
+    "tailwindcss": "^4"
   }
 }

@@ -5,6 +5,8 @@ import {
   Popup,
   Tooltip,
   Marker,
+  useMap,
+  useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
@@ -12,6 +14,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 
 function Map(props) {
   const { position, zoom } = props;
+
   return (
     <MapContainer center={position} zoom={zoom}>
       <TileLayer
