@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -12,8 +14,30 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
+// Component to handle map click events
+function MapClickHandler({ onMapClick }) {
+  useMapEvents({
+    click: (e) => {
+      const { lat, lng } = e.latlng;
+      onMapClick(lat, lng);
+    },
+  });
+  return null;
+}
+
+// Component to update map view when coordinates change
+function ChangeView({ center, zoom }) {
+  const map = useMap();
+  useEffect(() => {
+    if (center) {
+      map.flyTo(center, zoom);
+    }
+  }, [center, zoom, map]);
+  return null;
+}
+
 function Map(props) {
-  const { position, zoom } = props;
+  const { position, zoom, address, onMapClick } = props;
 
   return (
     <MapContainer center={position} zoom={zoom}>
@@ -21,11 +45,14 @@ function Map(props) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={position}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      {address && (
+        <Marker position={position}>
+          <Popup>{address}</Popup>
+        </Marker>
+      )}
+
+      <ChangeView center={position} zoom={13} />
+      <MapClickHandler onMapClick={onMapClick} />
     </MapContainer>
   );
 }
