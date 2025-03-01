@@ -51,7 +51,7 @@ function Map(props) {
         </Marker>
       )}
 
-      <ChangeView center={position} zoom={13} />
+      <ChangeView center={position} zoom={zoom} />
       <MapClickHandler onMapClick={onMapClick} />
     </MapContainer>
   );

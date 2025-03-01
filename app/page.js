@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { addRequestMeta } from "next/dist/server/request-meta";
 
 function HomePage() {
   // state to get current location
@@ -63,7 +62,7 @@ function HomePage() {
       ></input>
       <Map
         position={currLocation ? currLocation : [10.3099, 123.893]}
-        zoom={15}
+        zoom={17}
         onMapClick={handleMapClick}
         address={address}
       />
